@@ -38,7 +38,7 @@ class User (
 
     @Column(name = "updated_at")
     @Comment("최신 수정 날짜")
-    val updatedAt: LocalDateTime? = null,
+    val updatedAt: LocalDateTime? = LocalDateTime.now(),
 
     @Column(name = "deleted_at")
     @Comment("삭제 날짜")
