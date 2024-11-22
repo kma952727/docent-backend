@@ -29,7 +29,7 @@ class SecurityConfig(
             .sessionManagement { sessionCustomizer -> sessionCustomizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { authCustomizer ->
                 authCustomizer
-                    .requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("/oauth2/authorization/kakao").permitAll()
                     .requestMatchers("/free-users").permitAll()
                     .anyRequest().authenticated()
             }
