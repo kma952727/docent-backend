@@ -52,12 +52,11 @@ class SecurityConfig(
 
     @Bean
     fun corsConfigurationSource(): CorsConfigurationSource {
-        val configuration = CorsConfiguration().apply {
-            addAllowedOrigin("*")
-            addAllowedHeader("*")
-            addAllowedMethod("*")
-            allowCredentials = true
-        }
+        val configuration = CorsConfiguration()
+        configuration.addAllowedOriginPattern("http://localhost:*") // localhost 모든 포트 허용
+        configuration.addAllowedHeader("*")
+        configuration.addAllowedMethod("*")
+        configuration.allowCredentials = true // 쿠키 및 인증 정보 허용
 
         val source = UrlBasedCorsConfigurationSource()
         source.registerCorsConfiguration("/**", configuration)
