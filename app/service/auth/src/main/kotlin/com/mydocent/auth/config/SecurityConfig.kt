@@ -38,6 +38,7 @@ class SecurityConfig(
             .formLogin { customizer -> customizer.disable() }
             .httpBasic { customizer -> customizer.disable() }
             .csrf { customizer -> customizer.disable() }
+            .cors{ customizer -> customizer.disable() }
 
         http
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)
