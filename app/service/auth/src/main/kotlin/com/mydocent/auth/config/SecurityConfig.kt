@@ -1,5 +1,6 @@
 package com.mydocent.auth.config
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -20,6 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 class SecurityConfig(
     private val principalOauth2UserService :PrincipalOauth2UserService,
     private val oAuth2SuccessHandler: OAuth2SuccessHandler,
+    private val mapper: ObjectMapper,
     private val jwtFilter: JwtFilter
 ) {
 
@@ -37,7 +39,7 @@ class SecurityConfig(
                 oauth2Customizer.userInfoEndpoint { userInfoEndpointCustomizer -> userInfoEndpointCustomizer.userService(principalOauth2UserService) }
                 oauth2Customizer.successHandler(oAuth2SuccessHandler)
             }
-            .exceptionHandling { exceptionCustomizer -> exceptionCustomizer.authenticationEntryPoint(CustomAuthenticationEntryPoint()) }
+            .exceptionHandling { exceptionCustomizer -> exceptionCustomizer.authenticationEntryPoint(CustomAuthenticationEntryPoint(mapper)) }
             .formLogin { customizer -> customizer.disable() }
             .httpBasic { customizer -> customizer.disable() }
             .csrf { customizer -> customizer.disable() }

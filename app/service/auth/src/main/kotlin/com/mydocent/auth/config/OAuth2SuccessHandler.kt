@@ -48,6 +48,13 @@ class OAuth2SuccessHandler(
         response.characterEncoding = "utf-8"
         response.status = HttpStatus.OK.value()
 
+        /**
+         * TODO: cookie 반환 방법
+         * header나 cookie 어디로 반환할지 프론트와 이야기하기
+         */
+        response.setHeader("accessToken", accessToken)
+        response.setHeader("refreshToken", refreshToken)
+
         response.addCookie(Cookie("accessToken", accessToken))
         response.addCookie(Cookie("refreshToken", refreshToken))
     }
