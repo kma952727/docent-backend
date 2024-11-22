@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.CorsConfigurationSource
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 /**
  * permitAll(): securityContextHolder에 인증 객체가 없어도 인증 실패처리되지 않음
@@ -38,11 +41,26 @@ class SecurityConfig(
             .formLogin { customizer -> customizer.disable() }
             .httpBasic { customizer -> customizer.disable() }
             .csrf { customizer -> customizer.disable() }
-            .cors{ customizer -> customizer.disable() }
+//            .cors{ customizer -> customizer.disable() }
+            .cors{ it.configurationSource(corsConfigurationSource()) }
 
         http
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()
+    }
+
+    @Bean
+    fun corsConfigurationSource(): CorsConfigurationSource {
+        val configuration = CorsConfiguration().apply {
+            addAllowedOrigin("*")
+            addAllowedHeader("*")
+            addAllowedMethod("*")
+            allowCredentials = true
+        }
+
+        val source = UrlBasedCorsConfigurationSource()
+        source.registerCorsConfiguration("/**", configuration)
+        return source
     }
 }
