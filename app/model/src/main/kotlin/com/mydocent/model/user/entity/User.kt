@@ -42,7 +42,7 @@ class User (
 
     @Column(name = "deleted_at")
     @Comment("삭제 날짜")
-    val deletedAt: LocalDateTime? = null
+    val deletedAt: LocalDateTime? = LocalDateTime.now()
 ) {
 
     companion object {
