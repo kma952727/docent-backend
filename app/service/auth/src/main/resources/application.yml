@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 8080
 spring:
   profiles:
     active: local
@@ -19,16 +19,18 @@ spring:
       client:
         registration:
           kakao:
-            client-id: da788fd4d9db8b56bcdfba7930577572
+            # my-docent 연결용 정보
+            client-id: ca16d4396dd9fb54c856c85b57bbbaca
+            client-secret: I7VT4PEC5jJBhFcb1xRPlAf0allwWHF8
+            # 개인 테스트용 정보
+#            client-id: da788fd4d9db8b56bcdfba7930577572
+#            client-secret: 8HKXTux8lCZODbgbk9ZVTFotx5sp834s
             redirect-uri: http://localhost:8080/login/oauth2/code/kako # 코드받는 엔드 포인트
-            client-secret: 8HKXTux8lCZODbgbk9ZVTFotx5sp834s
             client-authentication-method: client_secret_post # http method
             authorization-grant-type: authorization_code # 인증 방식
             scope:
               - profile_nickname
-            client-name: kakao # 머야 이게
-#            client-id: ca16d4396dd9fb54c856c85b57bbbaca
-#            client-secret: I7VT4PEC5jJBhFcb1xRPlAf0allwWHF8
+            client-name: kakao
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize # 로그인 페이지
@@ -47,19 +49,22 @@ spring:
       client:
         registration:
           kakao:
-  #            client-id: ca16d4396dd9fb54c856c85b57bbbaca
-  #            client-secret: I7VT4PEC5jJBhFcb1xRPlAf0allwWHF8
-            client-id: da788fd4d9db8b56bcdfba7930577572
-            client-secret: 8HKXTux8lCZODbgbk9ZVTFotx5sp834s
-            client-authentication-method: POST # http method
+            # my-docent 연결용 정보
+            client-id: ca16d4396dd9fb54c856c85b57bbbaca
+            client-secret: I7VT4PEC5jJBhFcb1xRPlAf0allwWHF8
+            # 개인 테스트용 정보
+  #            client-id: da788fd4d9db8b56bcdfba7930577572
+  #            client-secret: 8HKXTux8lCZODbgbk9ZVTFotx5sp834s
+            redirect-uri: http://localhost:8080/login/oauth2/code/kako # 코드받는 엔드 포인트
+            client-authentication-method: client_secret_post # http method
             authorization-grant-type: authorization_code # 인증 방식
-            redirect-uri: http://localhost:8080/bye # 토큰받고 리다이렉션할 곳
-            scope: scopes?? # 머야 이게
-            client-name: kakao # 머야 이게
+            scope:
+              - profile_nickname
+            client-name: kakao
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize # 로그인 페이지
-            token-uri: https://kauth.kakao.com/oauth/token # 토근 api
+            token_uri: https://kauth.kakao.com/oauth/token # 토근 api
             user-info-uri: https://kapi.kakao.com/v2/user/me # 사용자 정보 조회 api
             user-name-attribute: id
 jwt:

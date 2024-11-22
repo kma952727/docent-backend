@@ -1,7 +1,7 @@
 ## 실행 시켜보기
 
 ### description
-1. port 8089
+1. port 8080
 2. 준비물 Java 17
 ### command
 `./gradlew :app:service:auth:bootRun`
