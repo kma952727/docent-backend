@@ -1,5 +1,6 @@
 package com.mydocent.model.user.entity
 
+import com.mydocent.shared.jpa.BaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime
@@ -48,16 +49,8 @@ class UserToken (
     @Comment("리프레시 토큰 만료 시간")
     val refreshTokenExpiredAt: LocalDateTime = LocalDateTime.now(),
 
-    @Column(name = "created_at")
-    @Comment("생성 시간")
-    val createdAt: LocalDateTime? = null,
-
-    @Column(name = "updated_at")
-    @Comment("마지막 수정 시간")
-    val updatedAt: LocalDateTime? = null,
-
     @Column(name = "scope")
     @Deprecated(message = "사용하지 마세요.")
     @Comment("oauth2 리소스 서버에서 얻을 수 있는 개인 정보 종류 (ex] email, nickname...)")
     val scope: String? = null
-)
+): BaseEntity()

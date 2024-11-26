@@ -1,7 +1,7 @@
 rootProject.name = "mydocent"
 
 include(
-    ":app:service:auth",
+    ":app:service:user",
     ":app:service:art",
     ":app:model",
     ":app:shared"

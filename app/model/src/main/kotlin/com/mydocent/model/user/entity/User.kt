@@ -1,6 +1,8 @@
 package com.mydocent.model.user.entity
 
 import com.mydocent.model.user.enum.OAuth2Type
+import com.mydocent.model.user.enum.converter.OAuth2TypeConverter
+import com.mydocent.shared.jpa.BaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime
@@ -30,20 +32,13 @@ class User (
 
     @Column(name = "login_type")
     @Comment("닉네임")
+    @Convert(converter = OAuth2TypeConverter::class)
     val oAuth2Type: OAuth2Type,
-
-    @Column(name = "created_at")
-    @Comment("가입 날짜")
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-
-    @Column(name = "updated_at")
-    @Comment("최신 수정 날짜")
-    val updatedAt: LocalDateTime? = LocalDateTime.now(),
 
     @Column(name = "deleted_at")
     @Comment("삭제 날짜")
     val deletedAt: LocalDateTime? = LocalDateTime.now()
-) {
+): BaseEntity() {
 
     companion object {
         fun signUp(oauthId: Long? = null, nickname: String? = null, email: String? = null, oAuth2Type: OAuth2Type): User =

@@ -31,9 +31,6 @@
 
 
 ### 테스트용 api
-1. 인증없이 접근 가능한 api
-   + path: {host}/api/free-users
-   + 기능: 의미없는 문자열을 반환
-2. 인증이 필요한 api
-   + {host}/api/auth-users
-   + 기능: 의미없는 문자열을 반환
+user module의 controller에 구현한 api 사용해주세요.
+
+![img.png](img.png)
