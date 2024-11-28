@@ -28,6 +28,8 @@ class SecurityConfig(
             .sessionManagement { sessionCustomizer -> sessionCustomizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { authCustomizer ->
                 authCustomizer
+                    // TODO : 허용된 IP에서만 요청받을 수 있게 수정하기
+                    .requestMatchers("/actuator/**").permitAll()
                     .requestMatchers("/oauth2/authorization/kakao").permitAll()
                     .requestMatchers("/api/users").permitAll()
                     .anyRequest().authenticated()

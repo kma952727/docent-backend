@@ -41,6 +41,14 @@ spring:
             user-name-attribute: id
 jwt:
   secret: qtl23tAavvbBbfr4o4kAAFBDFBERg43oih8vnxa03420
+
+management:
+  endpoints:
+    prometheus:
+      enabled: true
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
 ---
 spring:
   config:

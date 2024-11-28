@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 @RestControllerAdvice
 class GlobalExceptionHandler {
 
+    /**
+     * TODO : customException(+ argument, state )만 받기
+     */
     @ExceptionHandler(RuntimeException::class)
     fun handleMyDocentException(ex: RuntimeException): ResponseEntity<ApiResponse<Nothing>> {
         val errorCode = ErrorCode.codeOf(ex.message!!)

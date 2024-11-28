@@ -1,9 +1,9 @@
 plugins {
-	kotlin("jvm") version "1.9.25"
-	kotlin("plugin.spring") version "1.9.25"
-	id("org.springframework.boot") version "3.3.5"
-	id("io.spring.dependency-management") version "1.1.6"
-	kotlin("plugin.jpa") version "1.9.25"
+	alias(libs.plugins.kotlinJvm)
+	alias(libs.plugins.kotlinSpring)
+	alias(libs.plugins.kotlinJpa)
+	alias(libs.plugins.springBoot)
+	alias(libs.plugins.springDependencyManagement)
 	application
 }
 
@@ -28,6 +28,11 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-api:0.12.3")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.3")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
+
+	// monitor
+	implementation("io.micrometer:micrometer-registry-prometheus")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("io.micrometer:micrometer-core")
 
 	implementation(project(":app:shared"))
 	implementation(project(":app:model"))
