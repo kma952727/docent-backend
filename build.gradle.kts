@@ -10,15 +10,9 @@ group = "com.mydocent"
 version = "0.0.1"
 
 allprojects {
-	plugins.apply("org.jetbrains.kotlin.plugin.allopen")
 	plugins.apply("org.jetbrains.kotlin.plugin.noarg")
 	plugins.apply("org.jetbrains.kotlin.jvm") // implementation 함수 사용에 필요
 
-	allOpen {
-		annotation("jakarta.persistence.Entity")
-		annotation("jakarta.persistence.MappedSuperclass")
-		annotation("jakarta.persistence.Embeddable")
-	}
 	noArg {
 		annotation("jakarta.persistence.Entity")
 		annotation("jakarta.persistence.MappedSuperclass")
