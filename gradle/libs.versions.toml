@@ -2,19 +2,12 @@
 # kotlin vs id : https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
 
 [versions]
-guava = "30.0-jre"
-junit-jupiter = "5.10.0"
-
-kotlin-jvm = "1.9.25"
+kotlin-jvm = "1.9.25" # Kotlin version to use
 kotlin-spring = "1.9.25"
 kotlin-jpa = "1.9.25"
 
 spring-boot = "3.3.5"
 spring-dependency-managent = "1.1.6"
-
-[libraries]
-guava = { module = "com.google.guava:guava", version.ref = "guava" }
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-jvm" }
