@@ -7,13 +7,22 @@
 ### command
 `./gradlew :app:api:bootRun`
 
+### Swagger
+`/swagger-ui/index.html`
+
+### oauth api
+1. 카카오 로그인창 접근
+   + path: {host}/oauth2/authorization/kakao
+   + 로그인 완료 후 `access-token`, `refresh-token` cookie를 발급해줍니다.
+
+### 테스트용 api
+1. /api/users
 
 <br><br>
 
 ---
-## API
 
-### 구조
+### 모듈 구조
 
 ```dtd
 - app
@@ -29,14 +38,5 @@
         - 📦 utils : [ 광범위하게 사용되면서 최대한 단순한 기능만 넣기를 권고 ]
 ```
 
-### oauth api
-1. 카카오 로그인창 접근
-   + path: {host}/oauth2/authorization/kakao
-   + 로그인 완료 후 `access-token`, `refresh-token` cookie를 발급해줍니다.
-
     
 <br> <br>
-
-
-### 테스트용 api
-1. /api/users

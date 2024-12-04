@@ -36,6 +36,7 @@ dependencies {
 	// project
 	implementation(project(":app:shared:jpa"))
 	implementation(project(":app:shared:utils"))
+	implementation(project(":app:shared:http"))
 
 	implementation(project(":app:model"))
 }

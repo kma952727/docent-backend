@@ -4,6 +4,7 @@ import com.mydocent.auth.repository.AuthUserRepository
 import com.mydocent.model.auth.OAuth2Type
 import com.mydocent.model.auth.OauthKaKaoInfo
 import com.mydocent.model.user.entity.User
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest
 import org.springframework.security.oauth2.core.user.OAuth2User
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Component
 class PrincipalOauth2UserService(
     private val authUserRepository: AuthUserRepository
 ): DefaultOAuth2UserService(){
+
+    private val log = KotlinLogging.logger { }
 
     /**
      * 서드파티에 사용자 정보를 요청할 수 있는 access token 을 얻고나서 실행됩니다.

@@ -12,6 +12,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /**
  * permitAll(): securityContextHolder에 인증 객체가 없어도 인증 실패처리되지 않음
  *
+ * ---
+ * TODO
+ * 1. 모니터링 api는 허용된 IP에서만 요청받을 수 있게 수정하기
+ * 2. prod swagger 차단하기
  */
 @Configuration
 @EnableWebSecurity
@@ -28,8 +32,8 @@ class SecurityConfig(
             .sessionManagement { sessionCustomizer -> sessionCustomizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { authCustomizer ->
                 authCustomizer
-                    // TODO : 허용된 IP에서만 요청받을 수 있게 수정하기
                     .requestMatchers("/actuator/**").permitAll()
+                    .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                     .requestMatchers("/oauth2/authorization/kakao").permitAll()
                     .requestMatchers("/api/users").permitAll()
                     .anyRequest().authenticated()

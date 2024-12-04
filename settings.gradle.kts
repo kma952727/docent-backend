@@ -11,5 +11,6 @@ include(
     ":app:shared:db",
     ":app:shared:jpa",
     ":app:shared:utils",
-    ":app:shared:auth"
+    ":app:shared:auth",
+    ":app:shared:http"
 )

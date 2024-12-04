@@ -1,6 +1,6 @@
 package com.mydocent.model.user.dto
 
-class FindAccessTokenApiDto {
+class ApiFindAccessTokenDto {
     class Response(
         val accessToken: String
     )

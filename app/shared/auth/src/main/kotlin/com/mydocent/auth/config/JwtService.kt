@@ -26,6 +26,7 @@ class JwtService(
     fun createJwt(userAuthentication: UserAuthentication): String {
         return Jwts.builder()
             .subject("user")
+            .claim("userId", userAuthentication.userId.toString())
             .claim("email", userAuthentication.email)
             .expiration(userAuthentication.expiration)
             .signWith(secretKey)
@@ -47,7 +48,8 @@ class JwtService(
 
         return UserAuthentication(
             email = claims["email", String::class.java],
-            expiration = claims["expiration", Date::class.java]
+            expiration = claims["exp", Date::class.java],
+            userId = claims["userId", String::class.java].toInt()
         )
     }
 

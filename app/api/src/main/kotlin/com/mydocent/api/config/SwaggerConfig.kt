@@ -11,7 +11,7 @@ class SwaggerConfig {
     fun openAPI(): OpenAPI =
         Info().apply {
             version = "1.0.0"
-            title = "Docent User"
+            title = "Docent Server"
         }
             .let { OpenAPI().info(it) }
 }
