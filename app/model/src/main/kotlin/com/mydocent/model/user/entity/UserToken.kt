@@ -1,6 +1,6 @@
 package com.mydocent.model.user.entity
 
-import com.mydocent.shared.jpa.BaseEntity
+import com.mydocent.jpa.BaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime

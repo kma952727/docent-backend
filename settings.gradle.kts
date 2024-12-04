@@ -1,8 +1,15 @@
 rootProject.name = "mydocent"
 
 include(
-    ":app:service:user",
-    ":app:service:art",
+    ":app:api",
+
+    ":app:core:user",
+    ":app:core:art",
+
     ":app:model",
-    ":app:shared"
+
+    ":app:shared:db",
+    ":app:shared:jpa",
+    ":app:shared:utils",
+    ":app:shared:auth"
 )

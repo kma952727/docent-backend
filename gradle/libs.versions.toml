@@ -15,4 +15,7 @@ kotlinSpring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotli
 kotlinJpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin-jpa" }
 
 springBoot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+
+# https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/
+# 버전 지정하지 않아도 자동으로 의존성 연결을 해줌.
 springDependencyManagement = { id = "io.spring.dependency-management", version.ref = "spring-dependency-managent" }

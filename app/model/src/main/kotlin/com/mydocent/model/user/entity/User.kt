@@ -1,8 +1,8 @@
 package com.mydocent.model.user.entity
 
-import com.mydocent.model.user.enum.OAuth2Type
-import com.mydocent.model.user.enum.converter.OAuth2TypeConverter
-import com.mydocent.shared.jpa.BaseEntity
+import com.mydocent.jpa.BaseEntity
+import com.mydocent.model.auth.OAuth2Type
+import com.mydocent.model.auth.OAuth2TypeConverter
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime

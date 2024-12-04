@@ -1,0 +1,40 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active:
+      - local
+    group:
+      local:
+        - db
+        - jpa
+        - auth
+      prod:
+        - db
+        - jpa
+        - auth
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+management:
+  endpoints:
+    prometheus:
+      enabled: true
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+management:
+  endpoints:
+    prometheus:
+      enabled: true
+    web:
+      exposure:
+        include: health, info, metrics, prometheus

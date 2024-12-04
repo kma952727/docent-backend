@@ -1,0 +1,20 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    # aws db입니다.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mydocent-mysql.cdgkq6g8g97n.ap-northeast-2.rds.amazonaws.com/mydocent?serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: mydocent!007
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mydocent-mysql.cdgkq6g8g97n.ap-northeast-2.rds.amazonaws.com/mydocent?serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: mydocent!007
