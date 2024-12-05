@@ -9,6 +9,7 @@ import jakarta.servlet.http.Cookie
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
 import org.springframework.security.core.Authentication
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler
 import org.springframework.stereotype.Component
@@ -52,18 +53,16 @@ class OAuth2SuccessHandler(
     }
 
     private fun makeResponse(response: HttpServletResponse, accessToken: String, refreshToken: String) {
-        response.contentType = "application/json"
-        response.characterEncoding = "utf-8"
-        response.status = HttpStatus.OK.value()
+        response.apply {
+            contentType = MediaType.APPLICATION_JSON_VALUE
+            characterEncoding = Charsets.UTF_8.name()
+            status = HttpStatus.OK.value()
 
-        /**
-         * TODO: cookie 반환 방법
-         * header나 cookie 어디로 반환할지 프론트와 이야기하기
-         */
-        response.setHeader("accessToken", accessToken)
-        response.setHeader("refreshToken", refreshToken)
+            setHeader("accessToken", accessToken)
+            setHeader("refreshToken", refreshToken)
 
-        response.addCookie(Cookie("accessToken", accessToken))
-        response.addCookie(Cookie("refreshToken", refreshToken))
+            addCookie(Cookie("accessToken", accessToken))
+            addCookie(Cookie("refreshToken", refreshToken))
+        }
     }
 }
