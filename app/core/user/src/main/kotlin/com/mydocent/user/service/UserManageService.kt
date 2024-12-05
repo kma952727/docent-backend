@@ -16,7 +16,7 @@ class UserManageService(private val userRepository: UserRepository) {
     fun updateNickname(requestDto: ApiUpdateUserNicknameDto.Request, userId: Int) {
         val conflictUsers = userRepository.findAllByNickname(requestDto.newNickname)
         require(conflictUsers.isEmpty()) {
-            ErrorCode.CONFLICT_USER_NICKNAME.message
+            ErrorCode.CONFLICT_USER_NICKNAME.code
         }
 
         val user = userRepository.findOrThrow(pk = userId)

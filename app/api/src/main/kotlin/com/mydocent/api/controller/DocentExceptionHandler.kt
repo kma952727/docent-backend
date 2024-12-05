@@ -19,8 +19,17 @@ class DocentExceptionHandler {
             .body(body)
     }
 
-    @ExceptionHandler(*[IllegalArgumentException::class, IllegalStateException::class])
-    fun handleIllegalException(ex: RuntimeException): ResponseEntity<ApiResponse<Nothing>> {
+    @ExceptionHandler(IllegalArgumentException::class)
+    fun handleIllegalArgumentException(ex: IllegalArgumentException): ResponseEntity<ApiResponse<Nothing>> {
+        val errorCode = ErrorCode.codeOf(ex.message!!)
+        val body = ApiResponse<Nothing>(message = errorCode.message)
+
+        return ResponseEntity.status(errorCode.httpStatus)
+            .body(body)
+    }
+
+    @ExceptionHandler(IllegalStateException::class)
+    fun handleIllegalStateException(ex: IllegalStateException): ResponseEntity<ApiResponse<Nothing>> {
         val errorCode = ErrorCode.codeOf(ex.message!!)
         val body = ApiResponse<Nothing>(message = errorCode.message)
 

@@ -7,7 +7,6 @@ import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletRequest
 import jakarta.servlet.ServletResponse
 import jakarta.servlet.http.HttpServletRequest
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
@@ -15,6 +14,10 @@ import org.springframework.util.StringUtils
 import org.springframework.web.filter.GenericFilterBean
 
 
+/**
+ * `SecurityContextHolder.getContext().authentication`에 값이 할당되어야 인증 성공처리 됩니다.
+ *
+ */
 @Component
 class JwtFilter(
     private val jwtService: JwtService,
@@ -31,15 +34,18 @@ class JwtFilter(
             val userId = jwtService.parseToUserToken(accessToken).userId
 
             if(authUserTokenRepository.findByAccessToken(accessToken = accessToken) != null) {
-                val user = authUserRepository.findByIdOrNull(userId)!!
-                val myInfo = MyInfo(id = user.id!!)
+                val user = authUserRepository.findByIdAndDeletedAtIsNull(userId)
 
-                // TODO: 의존성 문제로 임시 처리
-                request.setAttribute(MyInfo::class.java.simpleName, myInfo)
+                if(user != null) {
+                    val myInfo = MyInfo(id = user.id!!)
 
-                val auth =
-                    UsernamePasswordAuthenticationToken(jwtService.parseToUserToken(accessToken), accessToken, null)
-                SecurityContextHolder.getContext().authentication = auth
+                    // TODO: 의존성 문제로 임시 처리
+                    request.setAttribute(MyInfo::class.java.simpleName, myInfo)
+
+                    val auth =
+                        UsernamePasswordAuthenticationToken(jwtService.parseToUserToken(accessToken), accessToken, null)
+                    SecurityContextHolder.getContext().authentication = auth
+                }
             }
         }
         chain.doFilter(request, response)

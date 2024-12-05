@@ -2,6 +2,16 @@ package com.mydocent.utils.error
 
 import org.springframework.http.HttpStatus
 
+/**
+ * 예외 던지기 예시
+ *
+ * 1. check, require 사용 시 `code`를 넣어줍니다.
+ * require(conflictUsers.isEmpty()) { ErrorCode.CONFLICT_USER_NICKNAME.code }
+ *
+ * 2. 명시적으로 예외를 던질 시에도 `ErrorCode class`를 메시지로 넣어줍니다.
+ * throw DocentException(ErrorCode.NOT_FOUND_USER)
+ *
+ */
 enum class ErrorCode(
     val code: String,
     val httpStatus: HttpStatus,
