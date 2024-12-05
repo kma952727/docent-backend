@@ -1,5 +1,6 @@
 package com.mydocent.user.service
 
+import com.mydocent.model.user.dto.ApiFindMyInfoDto
 import com.mydocent.model.user.dto.ApiUpdateUserNicknameDto
 import com.mydocent.user.repository.UserRepository
 import com.mydocent.user.repository.findOrThrow
@@ -19,6 +20,11 @@ class UserManageService(private val userRepository: UserRepository) {
 
         val user = userRepository.findOrThrow(pk = userId)
         user.nickname = requestDto.newNickname
+    }
+
+    fun findMyInfo(userId: Int): ApiFindMyInfoDto.Response {
+        val user = userRepository.findOrThrow(pk = userId)
+        return ApiFindMyInfoDto.Response(id = user.id!!, nickname = user.nickname)
     }
 
 

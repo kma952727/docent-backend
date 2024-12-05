@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
-@Tag(name = "AuthenticationController (인증에 관한 기능)")
+@Tag(name = "AuthenticationController - 인증에 관한 기능")
 @RequestMapping("/api")
 @RestController
 class AuthenticationController(
