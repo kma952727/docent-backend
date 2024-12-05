@@ -37,7 +37,7 @@ class User (
 
     @Column(name = "deleted_at")
     @Comment("삭제 날짜")
-    var deletedAt: LocalDateTime? = LocalDateTime.now()
+    var deletedAt: LocalDateTime? = null
 ): BaseEntity() {
 
     /**
