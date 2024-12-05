@@ -19,7 +19,6 @@ class MyInfoController(private val userManageService: UserManageService) {
 
     private val log = KotlinLogging.logger { }
 
-
     @Operation(
         summary = "자신의 닉네임 수정",
         description = """
@@ -42,6 +41,16 @@ class MyInfoController(private val userManageService: UserManageService) {
     @GetMapping("/my-info")
     @ResponseStatus(HttpStatus.OK)
     fun findMyInfo(@Schema(hidden = true) myInfo: MyInfo): ApiResponse<ApiFindMyInfoDto.Response> {
+        log.info { "${::findMyInfo.javaClass.simpleName} :: ${MyInfo::class.simpleName} :: $myInfo" }
         return ApiResponse(data = userManageService.findMyInfo(userId = myInfo.id))
+    }
+
+    @Operation(summary = "회원 탈퇴")
+    @DeleteMapping("/my-info/leave")
+    @ResponseStatus(HttpStatus.OK)
+    fun leave(@Schema(hidden = true) myInfo: MyInfo): ApiResponse<Nothing> {
+        log.info { "${::leave.javaClass.simpleName} :: ${MyInfo::class.simpleName} :: $myInfo" }
+        userManageService.leave(userId = myInfo.id)
+        return ApiResponse()
     }
 }

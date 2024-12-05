@@ -37,8 +37,15 @@ class User (
 
     @Column(name = "deleted_at")
     @Comment("삭제 날짜")
-    val deletedAt: LocalDateTime? = LocalDateTime.now()
+    var deletedAt: LocalDateTime? = LocalDateTime.now()
 ): BaseEntity() {
+
+    /**
+     * 회원 탈퇴
+     */
+    fun leave(time: LocalDateTime) {
+        deletedAt = time
+    }
 
     companion object {
         fun signUp(oauthId: Long? = null, nickname: String? = null, email: String? = null, oAuth2Type: OAuth2Type): User =

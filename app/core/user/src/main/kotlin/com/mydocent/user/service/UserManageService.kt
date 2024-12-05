@@ -7,6 +7,7 @@ import com.mydocent.user.repository.findOrThrow
 import com.mydocent.utils.error.ErrorCode
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.time.LocalDateTime
 
 @Service
 class UserManageService(private val userRepository: UserRepository) {
@@ -20,6 +21,11 @@ class UserManageService(private val userRepository: UserRepository) {
 
         val user = userRepository.findOrThrow(pk = userId)
         user.nickname = requestDto.newNickname
+    }
+
+    @Transactional
+    fun leave(userId: Int) {
+        userRepository.findOrThrow(pk = userId).leave(LocalDateTime.now())
     }
 
     fun findMyInfo(userId: Int): ApiFindMyInfoDto.Response {
