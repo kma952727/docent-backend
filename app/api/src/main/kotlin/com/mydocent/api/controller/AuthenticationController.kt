@@ -1,7 +1,6 @@
 package com.mydocent.api.controller
 
 import com.mydocent.model.user.dto.ApiFindAccessTokenDto
-import com.mydocent.model.user.dto.ExtKakaoLogoutDto
 import com.mydocent.user.service.AuthenticationService
 import com.mydocent.utils.api.ApiResponse
 import com.mydocent.utils.api.MyInfo

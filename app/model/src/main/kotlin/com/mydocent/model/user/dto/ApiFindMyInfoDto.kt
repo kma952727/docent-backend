@@ -3,7 +3,7 @@ package com.mydocent.model.user.dto
 import io.swagger.v3.oas.annotations.media.Schema
 
 class ApiFindMyInfoDto {
-    @Schema(description = "자신의 정보")
+    @Schema(description = "자신의 정보", name = "ApiFindMyInfoDto.Response")
     data class Response(
         @Schema(description = "사용자 pk", requiredMode = Schema.RequiredMode.REQUIRED)
         val id: Int,

@@ -5,9 +5,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 class ApiFindPlayListDto {
 
-    @Schema(description = "플레이 리스트 정보")
+    @Schema(description = "플레이 리스트 정보", name = "ApiFindPlayListDto.Response", hidden = true)
     data class Response(
-        @Schema(description = "플레이 리스트 pk", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+        @Schema(description = "플레이 리스트 pk", requiredMode = Schema.RequiredMode.REQUIRED)
         val id: Int,
 
         @Schema(description = "ai 플랫폼의 데이터와 연결시켜주는 FK", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
