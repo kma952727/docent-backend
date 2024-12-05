@@ -13,6 +13,10 @@ tasks.getByName("jar") {
 }
 
 dependencies {
+
+	// api docs
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4")
+
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation(project(":app:shared:jpa"))
 }

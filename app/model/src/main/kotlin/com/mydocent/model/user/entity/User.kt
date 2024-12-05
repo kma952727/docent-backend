@@ -24,7 +24,7 @@ class User (
 
     @Column(name = "nickname")
     @Comment("닉네임")
-    val nickname: String,
+    var nickname: String,
 
     @Column(name = "email")
     @Comment("이메일")

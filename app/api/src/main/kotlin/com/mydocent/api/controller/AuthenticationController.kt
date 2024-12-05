@@ -36,9 +36,9 @@ class AuthenticationController(
         summary = "사용자 로그아웃",
         description = """
             `docent server`에서 로그아웃 처리
-            1. `kakaoAuth server`는 로그아웃 처리하지 않습니다.
-            2. `header`에 `Access Token`만 보내면 됩니다.
-            3. `Token` 검증 과정때문에 에러를 반환할 수 있습니다. 이러한 경우 브라우저에서 token 정보를 버리면 로그아웃과 동일한 상태가 됩니다.
+            - `kakaoAuth server`는 로그아웃 처리하지 않습니다.
+            - `header`에 `Access Token`만 보내면 됩니다.
+            - `Token` 검증 과정때문에 에러를 반환할 수 있습니다. 이러한 경우 브라우저에서 token 정보를 버리면 로그아웃과 동일한 상태가 됩니다.
         """
     )
     @ResponseStatus(HttpStatus.OK)

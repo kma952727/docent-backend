@@ -1,0 +1,25 @@
+package com.mydocent.user.service
+
+import com.mydocent.model.user.dto.ApiUpdateUserNicknameDto
+import com.mydocent.user.repository.UserRepository
+import com.mydocent.user.repository.findOrThrow
+import com.mydocent.utils.error.ErrorCode
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
+@Service
+class UserManageService(private val userRepository: UserRepository) {
+
+    @Transactional
+    fun updateNickname(requestDto: ApiUpdateUserNicknameDto.Request, userId: Int) {
+        val conflictUsers = userRepository.findAllByNickname(requestDto.newNickname)
+        require(conflictUsers.isEmpty()) {
+            ErrorCode.CONFLICT_USER_NICKNAME.message
+        }
+
+        val user = userRepository.findOrThrow(pk = userId)
+        user.nickname = requestDto.newNickname
+    }
+
+
+}

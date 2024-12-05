@@ -15,9 +15,6 @@
    + path: {host}/oauth2/authorization/kakao
    + 로그인 완료 후 `access-token`, `refresh-token` cookie를 발급해줍니다.
 
-### 테스트용 api
-1. /api/users
-
 <br><br>
 
 ---

@@ -35,7 +35,6 @@ class SecurityConfig(
                     .requestMatchers("/actuator/**").permitAll()
                     .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                     .requestMatchers("/oauth2/authorization/kakao").permitAll()
-                    .requestMatchers("/api/users").permitAll()
                     .anyRequest().authenticated()
             }
             .oauth2Login { oauth2Customizer ->
