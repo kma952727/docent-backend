@@ -1,4 +1,4 @@
-package com.mydocent.api.controller
+package com.mydocent.api.component
 
 import com.mydocent.utils.api.ApiResponse
 import com.mydocent.utils.error.DocentException

@@ -5,7 +5,7 @@ import com.mydocent.utils.error.DocentException
 import com.mydocent.utils.error.ErrorCode
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface UserRepository: JpaRepository<User, Int> {
+interface UserJpaRepository: JpaRepository<User, Int> {
     fun findAllByNickname(nickname: String): List<User>
     fun findByIdAndDeletedAtIsNull(pk: Int): User?
 }
@@ -13,6 +13,6 @@ interface UserRepository: JpaRepository<User, Int> {
 /**
  * 삭제 마킹처리 사용자는 제외하고 조회
  */
-fun UserRepository.findOrThrow(pk: Int): User {
+fun UserJpaRepository.findOrThrow(pk: Int): User {
     return findByIdAndDeletedAtIsNull(pk) ?: throw DocentException(ErrorCode.NOT_FOUND_USER)
 }

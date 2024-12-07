@@ -1,4 +1,4 @@
-package com.mydocent.api.config
+package com.mydocent.api.component
 
 import com.mydocent.utils.api.MyInfo
 import jakarta.servlet.http.HttpServletRequest

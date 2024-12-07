@@ -1,16 +1,16 @@
 package com.mydocent.user.service
 
-import com.mydocent.user.repository.UserTokenRepository
+import com.mydocent.user.repository.UserJpaTokenRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
 class AuthenticationService(
-    private val userTokenRepository: UserTokenRepository
+    private val userJpaTokenRepository: UserJpaTokenRepository
 ) {
 
     @Transactional
     fun logout(userId: Int) {
-        userTokenRepository.findByUserId(userId)?.let(userTokenRepository::delete)
+        userJpaTokenRepository.findByUserId(userId)?.let(userJpaTokenRepository::delete)
     }
 }
