@@ -1,6 +1,6 @@
 package com.mydocent.auth.config
 
-import com.mydocent.model.auth.UserAuthentication
+import com.mydocent.model.auth.vo.UserAuthentication
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys

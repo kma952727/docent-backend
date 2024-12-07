@@ -1,7 +1,7 @@
 package com.mydocent.auth.config
 
 import com.mydocent.auth.repository.AuthUserTokenRepository
-import com.mydocent.model.auth.UserAuthentication
+import com.mydocent.model.auth.vo.UserAuthentication
 import com.mydocent.model.user.entity.User
 import com.mydocent.model.user.entity.UserToken
 import com.mydocent.utils.api.MyInfo

@@ -1,8 +1,8 @@
 package com.mydocent.auth.config
 
 import com.mydocent.auth.repository.AuthUserRepository
-import com.mydocent.model.auth.OAuth2Type
-import com.mydocent.model.auth.OauthKaKaoInfo
+import com.mydocent.model.auth.vo.OAuth2Type
+import com.mydocent.model.auth.vo.OauthKaKaoInfo
 import com.mydocent.model.user.entity.User
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService

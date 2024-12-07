@@ -1,4 +1,4 @@
-package com.mydocent.model.auth
+package com.mydocent.model.auth.vo
 
 class OauthKaKaoInfo(
     private val attributes: Map<String, Any> = mutableMapOf()

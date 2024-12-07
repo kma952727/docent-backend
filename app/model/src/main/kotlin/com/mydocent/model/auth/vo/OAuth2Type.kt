@@ -1,4 +1,4 @@
-package com.mydocent.model.auth
+package com.mydocent.model.auth.vo
 
 enum class OAuth2Type(val registrationName: String, val code: Int) {
     KAKAO("kakao", 0);

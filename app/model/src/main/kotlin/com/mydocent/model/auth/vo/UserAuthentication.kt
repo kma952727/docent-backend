@@ -1,4 +1,4 @@
-package com.mydocent.model.auth
+package com.mydocent.model.auth.vo
 
 import java.util.Date
 
