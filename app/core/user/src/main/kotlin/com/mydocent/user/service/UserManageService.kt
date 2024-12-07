@@ -2,7 +2,7 @@ package com.mydocent.user.service
 
 import com.mydocent.model.user.dto.ApiFindMyInfoDto
 import com.mydocent.model.user.dto.ApiUpdateUserNicknameDto
-import com.mydocent.user.repository.UserRepository
+import com.mydocent.user.repository.UserJpaRepository
 import com.mydocent.user.repository.findOrThrow
 import com.mydocent.utils.error.ErrorCode
 import org.springframework.stereotype.Service
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
 @Service
-class UserManageService(private val userRepository: UserRepository) {
+class UserManageService(private val userRepository: UserJpaRepository) {
 
     @Transactional
     fun updateNickname(requestDto: ApiUpdateUserNicknameDto.Request, userId: Int) {
