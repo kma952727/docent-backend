@@ -1,19 +1,19 @@
 ## 실행 시켜보기
 
-### description
+### summary
 1. port 8080
-2. 준비물 Java 17
+2. required: Java 17
 
 ### command
-`./gradlew :app:api:bootRun`
+서버 실행 `./gradlew :app:api:bootRun`
 
 ### Swagger
-`/swagger-ui/index.html`
+docs path `/swagger-ui/index.html`
 
 ### oauth api
 1. 카카오 로그인창 접근
    + path: {host}/oauth2/authorization/kakao
-   + 로그인 완료 후 `access-token`, `refresh-token` cookie를 발급해줍니다.
+   + 로그인 완료 후 `access-token`, `refresh-token` cookie, header로 함께 전달
 
 <br><br>
 
